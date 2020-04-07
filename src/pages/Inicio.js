@@ -7,18 +7,55 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import styles from "../styles/styles";
 import logo from "../../assets/logo.png";
 import IconSimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import IconFeather from "react-native-vector-icons/Feather";
 import IconEntypo from "react-native-vector-icons/Entypo";
+import { Icon } from "native-base";
 
 export default function Inicio() {
+  const cards = [
+    {
+      nome: "Cartão",
+      icone: "credit-card",
+      tipoIcone: "FontAwesome",
+    },
+    {
+      nome: "Transferir",
+      icone: "exchange",
+      tipoIcone: "FontAwesome",
+    },
+    {
+      nome: "Agendamentos",
+      icone: "file-text-o",
+      tipoIcone: "FontAwesome",
+    },
+    {
+      nome: "Pagar",
+      icone: "barcode-scan",
+      tipoIcone: "MaterialCommunityIcons",
+    },
+    {
+      nome: "Extrato",
+      icone: "md-paper",
+      tipoIcone: "Ionicons",
+    },
+    {
+      nome: "Meus contatos",
+      icone: "notebook",
+      tipoIcone: "SimpleLineIcons",
+    },
+  ];
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
       <ScrollView showsHorizontalScrollIndicator={false} style={styles.body}>
+        {/* header */}
         <View style={styles.header}>
           <View style={styles.viewLogoHeader}>
             <Image source={logo} style={styles.logoHeader} />
@@ -42,6 +79,7 @@ export default function Inicio() {
           </View>
         </View>
 
+        {/* card saldo */}
         <View style={styles.cardSaldo}>
           <View style={styles.viewLabelSaldo}>
             <View style={{ flex: 1 }}>
@@ -74,14 +112,52 @@ export default function Inicio() {
           </TouchableOpacity>
         </View>
 
+        {/* card agendamento */}
         <View style={styles.cardAgendamentos}>
           <Text style={styles.textAgendamentos}>Agendamentos</Text>
-          
-          <View style={styles.}>
 
+          <View style={styles.viewValorDetalheAgendamento}>
+            <View style={styles.viewValorAgendamento}>
+              <Text
+                style={[styles.textAgendamentos, styles.textValorAgendamento]}
+              >
+                - R$ 698,06
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={styles.btnDetalheAgendamento}
+              onPress={() => {}}
+            >
+              <Text style={styles.textBtnTodosSaldos}>Ver detalhes</Text>
+            </TouchableOpacity>
           </View>
 
+          <Text style={[styles.textAgendamentos, styles.textMeses]}>
+            Próximos 12 meses
+          </Text>
         </View>
+
+        {/* lista cards */}
+        <FlatList
+          style={styles.listaCards}
+          data={cards}
+          numColumns={2}
+          keyExtractor={(item) => item.nome}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity onPress={() => {}} style={styles.cards}>
+                <View style={{ flexDirection: "row" }}>
+                  <Icon
+                    style={styles.iconCard}
+                    name={item.icone}
+                    type={item.tipoIcone}
+                  />
+                  <Text style={styles.textCard}>{item.nome}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );

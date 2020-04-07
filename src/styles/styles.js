@@ -138,6 +138,53 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingStart: 12,
   },
+  textMeses: {
+    fontSize: 13,
+  },
+  viewValorDetalheAgendamento: {
+    flexDirection: "row",
+  },
+  viewValorAgendamento: {
+    flex: 1,
+    alignSelf: "center",
+  },
+  textValorAgendamento: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: colors.whiteDark3,
+  },
+  btnDetalheAgendamento: {
+    alignSelf: "flex-end",
+    paddingEnd: 15,
+    justifyContent: "center",
+    marginTop: 7,
+  },
+  listaCards: {
+    width: Dimensions.get("screen").width - 20,
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  cards: {
+    margin: 5,
+    padding: 15,
+    width: "50%",
+    marginTop: 5,
+    alignSelf: "center",
+    backgroundColor: colors.white,
+    borderRadius: 3,
+  },
+  iconCard: {
+    color: colors.primaryColor,
+    paddingStart: 5,
+    paddingTop: 2,
+  },
+  textCard: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: colors.whiteDark3,
+    paddingTop: 5,
+    paddingStart: 10,
+  },
 });
 
 export default styles;
