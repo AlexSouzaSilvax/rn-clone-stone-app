@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   SafeAreaView,
@@ -51,6 +51,8 @@ export default function Inicio() {
     },
   ];
 
+  const [visibleSaldoConta, setVisibleSaldoConta] = useState(true);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -80,37 +82,56 @@ export default function Inicio() {
         </View>
 
         {/* card saldo */}
-        <View style={styles.cardSaldo}>
-          <View style={styles.viewLabelSaldo}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.textLabelSaldoConta}>Saldo da Conta</Text>
-            </View>
-            <View style={styles.viewTexOcultaSaldoConta}>
-              <TouchableOpacity
-                style={styles.viewSaldoOcultar}
-                onPress={() => {}}
-              >
-                <Text style={styles.textLabelOcultar}>Ocultar</Text>
-                <IconFeather style={styles.iconBtnOcultar} name="eye-off" />
-              </TouchableOpacity>
+        {visibleSaldoConta ? (
+          <View style={[styles.cardSaldo, { paddingBottom: 10 }]}>
+            <View style={styles.viewLabelSaldo}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.textLabelSaldoConta}>Saldo da Conta</Text>
+              </View>
+              <View style={styles.viewTexOcultaSaldoConta}>
+                <TouchableOpacity
+                  style={styles.viewSaldoOcultar}
+                  onPress={() => setVisibleSaldoConta(!visibleSaldoConta)}
+                >
+                  <Text style={styles.textLabelOcultar}>Mostrar</Text>
+                  <IconFeather style={styles.iconBtnOcultar} name="eye-off" />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
+        ) : (
+          <View style={styles.cardSaldo}>
+            <View style={styles.viewLabelSaldo}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.textLabelSaldoConta}>Saldo da Conta</Text>
+              </View>
+              <View style={styles.viewTexOcultaSaldoConta}>
+                <TouchableOpacity
+                  style={styles.viewSaldoOcultar}
+                  onPress={() => setVisibleSaldoConta(!visibleSaldoConta)}
+                >
+                  <Text style={styles.textLabelOcultar}>Ocultar</Text>
+                  <IconFeather style={styles.iconBtnOcultar} name="eye" />
+                </TouchableOpacity>
+              </View>
+            </View>
 
-          <Text style={styles.valueSaldoConta} numberOfLines={1}>
-            R$ 4.780,20
-          </Text>
+            <Text style={styles.valueSaldoConta} numberOfLines={1}>
+              R$ 4.780,20
+            </Text>
 
-          <View style={styles.divisao} />
+            <View style={styles.divisao} />
 
-          <TouchableOpacity style={styles.btnTodosSaldos} onPress={() => {}}>
-            <Text style={styles.textBtnTodosSaldos}>Ver todos os saldos</Text>
-            <IconEntypo
-              style={styles.iconBtnTodosSaldos}
-              name="chevron-right"
-              size={15}
-            />
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity style={styles.btnTodosSaldos} onPress={() => {}}>
+              <Text style={styles.textBtnTodosSaldos}>Ver todos os saldos</Text>
+              <IconEntypo
+                style={styles.iconBtnTodosSaldos}
+                name="chevron-right"
+                size={15}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
 
         {/* card agendamento */}
         <View style={styles.cardAgendamentos}>
