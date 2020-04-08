@@ -8,7 +8,6 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
-  Dimensions,
 } from "react-native";
 import styles from "../styles/styles";
 import logo from "../../assets/logo.png";
@@ -51,7 +50,7 @@ export default function Inicio() {
     },
   ];
 
-  const [visibleSaldoConta, setVisibleSaldoConta] = useState(true);
+  const [visibleSaldoConta, setVisibleSaldoConta] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
