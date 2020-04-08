@@ -56,31 +56,31 @@ export default function Inicio() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <ScrollView showsHorizontalScrollIndicator={false} style={styles.body}>
-        {/* header */}
-        <View style={styles.header}>
-          <View style={styles.viewLogoHeader}>
-            <Image source={logo} style={styles.logoHeader} />
-          </View>
-          <View style={styles.viewHeader}>
-            <Text style={styles.tituloHeader} numberOfLines={1}>
-              Bolos da Paz
-            </Text>
-            <Text style={styles.subTituloHeader} numberOfLines={1}>
-              CNPJ: 16.010.123/0001-76
-            </Text>
-          </View>
-          <View style={styles.viewBtnHeader}>
-            <TouchableOpacity style={styles.btnHeader} onPress={() => {}}>
-              <Text style={styles.textBtnHeader}>Trocar</Text>
-              <IconSimpleLineIcons
-                style={styles.iconBtnHeader}
-                name="arrow-right"
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
 
+      {/* header */}
+      <View style={styles.header}>
+        <View style={styles.viewLogoHeader}>
+          <Image source={logo} style={styles.logoHeader} />
+        </View>
+        <View style={styles.viewHeader}>
+          <Text style={styles.tituloHeader} numberOfLines={1}>
+            Bolos da Paz
+          </Text>
+          <Text style={styles.subTituloHeader} numberOfLines={1}>
+            CNPJ: 16.010.123/0001-76
+          </Text>
+        </View>
+        <View style={styles.viewBtnHeader}>
+          <TouchableOpacity style={styles.btnHeader} onPress={() => {}}>
+            <Text style={styles.textBtnHeader}>Trocar</Text>
+            <IconSimpleLineIcons
+              style={styles.iconBtnHeader}
+              name="arrow-right"
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <ScrollView style={styles.body}>
         {/* card saldo */}
         {visibleSaldoConta ? (
           <View style={[styles.cardSaldo, { paddingBottom: 10 }]}>

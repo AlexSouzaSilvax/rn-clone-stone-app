@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 import colors from "./colors";
 
 const styles = StyleSheet.create({
@@ -90,10 +90,18 @@ const styles = StyleSheet.create({
   iconBtnOcultar: {
     color: colors.whiteDark2,
     paddingStart: 5,
-    paddingTop: 5,
+    ...Platform.select({
+      ios: {
+        paddingTop: 2,
+      },
+      android: {
+        paddingTop: 5,
+      },
+    }),
   },
   viewSaldoOcultar: {
     flexDirection: "row",
+    height: 25,
   },
   valueSaldoConta: {
     color: colors.cinza,
@@ -130,7 +138,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("screen").width - 20,
     backgroundColor: colors.white,
     borderRadius: 3,
-    height: 100,
+    paddingBottom: 7,
   },
   textAgendamentos: {
     marginTop: 5,
@@ -182,8 +190,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     color: colors.whiteDark3,
-    paddingTop: 5,
     paddingStart: 10,
+    ...Platform.select({
+      ios: {
+        paddingTop: 8,
+      },
+      android: {
+        paddingTop: 5,
+      },
+    }),
   },
 });
 
